@@ -1,0 +1,13 @@
+{
+  "serial": {
+    "port": "COM6",
+    "baudrate": 115200,
+    "timeout": 1
+  },
+  "node": {
+    "callsign": "IK5XMK-99"
+  },
+  "database": {
+    "path": "meshcom.db"
+  }
+}

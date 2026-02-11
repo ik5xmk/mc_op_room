@@ -1,0 +1,6 @@
+{
+    "DB_PATH": "meshcom.db",
+    "POLL_INTERVAL": 10,
+    "MY_CALLSIGN": "IK5XMK-98",
+    "SHOW_ONLY_TODAY": true
+}

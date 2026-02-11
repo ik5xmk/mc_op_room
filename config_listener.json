@@ -1,0 +1,28 @@
+{
+    "DB_PATH": "meshcom.db",
+    "POLL_INTERVAL": 10,
+
+    "DST_GROUP": "22251",
+
+    "AUTHORIZED_SRCS": [
+        "IK5XMK-13",
+        "IK5XMK-12"
+    ],
+
+    "KEEP_ALIVE_SECONDS": 60,
+
+    "COMMAND_CASE_INSENSITIVE": true,
+
+    "COMMANDS": [
+        {
+            "command": "provacmd2",
+            "windows": "C:\\Users\\David\\Desktop\\messaggio_demo2.bat",
+            "unix": "scripts/ciao.sh"
+        },
+        {
+            "command": "provacmd",
+            "windows": "start \"\" cmd /k C:\\Users\\David\\Desktop\\messaggio_demo.bat",
+            "unix": "scripts/status.sh"
+        }
+    ]
+}

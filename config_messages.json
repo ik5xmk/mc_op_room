@@ -1,0 +1,7 @@
+{
+    "DB_PATH": "meshcom.db",
+    "POLL_INTERVAL": 10,
+    "SERVER_IP": "127.0.0.1",
+    "SERVER_PORT": 1703,
+    "UDP_PREFIX": "MSG_OUT:"
+}

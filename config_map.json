@@ -1,0 +1,5 @@
+{
+    "DB_PATH": "meshcom.db",
+    "POLL_INTERVAL": 10,
+    "RADIUS_KM": 10
+}
