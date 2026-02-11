@@ -1,6 +1,11 @@
 # mc_op_room
 A suite of programs for LoRa MeshCom for small operations room management
 <br><br>
+- Logger: Read and transmit interface with the Lora card, with data saved to a database. Designed for future expansion to receive commands from applications.<br>
+- Messages: Displays received messages in a window, with the option to filter incoming messages. You can send a reply by selecting the received group, and send it to the logger for transmission to the meshcom network.<br>
+- Nodes: displays the coordinates of reachable nodes and calculates the distances from each node simply by selecting it as the origin.<br>
+- Map: the only program in the suite that requires an internet connection to view nodes on a map, with the last listening time.<br>
+Run the logger as the first software, and leave it listening for message packets and positions. Then run the others as soon as the first data arrives.<br>
 You can find a complete explanation of how to use the software in this article (Google can help with translation), as well as programs developed for Windows. No liability or support is assumed for the use of the programs, which are intended for hobbyist and amateur radio use. They can be freely modified.
 <br>
 [https://www.grupporadiofirenze.net/2026/01/16/un-software-per-gestire-off-grid-la-rete-lora-meshcom/](https://www.grupporadiofirenze.net/2026/01/16/un-software-per-gestire-off-grid-la-rete-lora-meshcom/)<br><br>
