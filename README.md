@@ -7,7 +7,7 @@ A suite of programs for LoRa MeshCom for small operations room management
 - Map: the only program in the suite that requires an internet connection to view nodes on a map, with the last listening time.<br><br>
 
 Run the logger as the first software, and leave it listening for message packets and positions. Then run the others as soon as the first data arrives.<br><br>
-You can find a complete explanation of how to use the software in this article (Google can help with translation), as well as programs developed for Windows.
+You can find a complete explanation of how to use the software in this article (Google can help with translation), as well as programs developed for Windows:
 <br>
 [https://www.grupporadiofirenze.net/2026/01/16/un-software-per-gestire-off-grid-la-rete-lora-meshcom/](https://www.grupporadiofirenze.net/2026/01/16/un-software-per-gestire-off-grid-la-rete-lora-meshcom/)<br><br>
 For information on the MeshCom project see here:
