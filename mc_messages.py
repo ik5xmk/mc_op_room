@@ -151,6 +151,8 @@ class MeshcomViewer(tk.Tk):
 
     def open_send_window(self, dst):
         win = tk.Toplevel(self)
+        win.update_idletasks() # fix xrdp + tkinter bug, needs refresh
+        win.lift()             #
         win.title(f"Invia messaggio a {dst}")
         win.geometry("400x180")
         win.transient(self)
@@ -203,3 +205,4 @@ class MeshcomViewer(tk.Tk):
 if __name__ == "__main__":
     app = MeshcomViewer()
     app.mainloop()
+
