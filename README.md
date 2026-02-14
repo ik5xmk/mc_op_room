@@ -14,5 +14,8 @@ For information on the MeshCom project see here:
 [MESHCOM](https://icssw.org/en/meshcom/)<br><br>
 For details on the initial configuration of the lora cards and general information and useful links:
 [https://www.grupporadiofirenze.net/2025/11/27/meshcom-una-rete-radioamatoriale-su-tecnologia-lora/](https://www.grupporadiofirenze.net/2025/11/27/meshcom-una-rete-radioamatoriale-su-tecnologia-lora/)<br><br>
-These programs are written in Python, requiring libraries to be loaded manually, and you must be familiar with the environment and networking features, as well as knowing how to manage configurations on the Lora cards. No liability or support is assumed for the use of the programs, which are intended for hobbyist and amateur radio use. They can be freely modified.<br><br>
+These programs are written in Python, requiring libraries to be loaded manually, and you must be familiar with the environment and networking features, as well as knowing how to manage configurations on the Lora cards.<br>
+So, use "pip install pyserial --break-system-packages" and "pip install tkintermapview --break-system-packages" for example.<br>
+Remember: run mc_logger from sudo/root to access the serial port and run mc_messages as user and not as root, and also other programs with a graphical interface.<br>
+No liability or support is assumed for the use of the programs, which are intended for hobbyist and amateur radio use. They can be freely modified.<br><br>
 ![](https://github.com/ik5xmk/mc_op_room/blob/main/meshcom_op_room.jpg)<br>
