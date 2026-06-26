@@ -207,6 +207,7 @@ def main():
             if frame_type == "msg":
                 msg = frame.get("msg") or frame.get("text") or frame.get("message", "")
                 dst = frame.get("dst", "?")
+                dst = dst.split(",")[-1].strip() # VIA patch
                 out += f" | DST: {dst} | DA: {src} | TESTO: {msg}"
 
             # posizione
