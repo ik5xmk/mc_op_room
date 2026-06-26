@@ -48,24 +48,24 @@ class MeshcomViewer(tk.Tk):
         top = tk.Frame(self)
         top.pack(fill="x", padx=5, pady=5)
 
-        tk.Label(top, text="Filtro DST (cifre o *):").pack(side="left")
+        tk.Label(top, text="Filtro  (cifre o *):").pack(side="left")
         self.filter_entry = tk.Entry(top, width=10)
         self.filter_entry.pack(side="left", padx=5)
 
         frame = tk.Frame(self)
         frame.pack(fill="both", expand=True)
 
-        columns = ("time", "src", "dst", "msg")
+        columns = ("time", "src", "", "msg")
         self.tree = ttk.Treeview(frame, columns=columns, show="headings")
 
         self.tree.heading("time", text="TIME")
         self.tree.heading("src", text="SRC")
-        self.tree.heading("dst", text="DST")
+        self.tree.heading("", text="")
         self.tree.heading("msg", text="MSG")
 
         self.tree.column("time", width=160)
         self.tree.column("src", width=140)
-        self.tree.column("dst", width=120)
+        self.tree.column("", width=120)
         self.tree.column("msg", width=600)
 
         scrollbar = ttk.Scrollbar(frame, orient="vertical", command=self.tree.yview)
@@ -82,7 +82,7 @@ class MeshcomViewer(tk.Tk):
         self.conn = sqlite3.connect(DB_PATH)
         self.conn.row_factory = sqlite3.Row
 
-    def _build_dst_filter(self):
+    def _build__filter(self):
         pattern = self.filter_entry.get().strip()
 
         if not re.fullmatch(r"[\d*]{0,5}", pattern):
@@ -91,14 +91,14 @@ class MeshcomViewer(tk.Tk):
         if pattern == "" or pattern == "*":
             return "", []
 
-        return " AND dst LIKE ? ", [pattern.replace("*", "%")]
+        return " AND  LIKE ? ", [pattern.replace("*", "%")]
 
     def load_last_record(self):
         cur = self.conn.cursor()
-        filter_sql, params = self._build_dst_filter()
+        filter_sql, params = self._build__filter()
 
         sql = f"""
-            SELECT id, time, src, dst, msg
+            SELECT id, time, src, , msg
             FROM msg
             WHERE 1=1 {filter_sql}
             ORDER BY id DESC
@@ -108,16 +108,16 @@ class MeshcomViewer(tk.Tk):
         cur.execute(sql, params)
         row = cur.fetchone()
         if row:
-            self.tree.insert("", 0, values=(row["time"], row["src"], row["dst"], row["msg"]))
+            self.tree.insert("", 0, values=(row["time"], row["src"], row[""], row["msg"]))
             self.last_id = row["id"]
 
     def poll_messages(self):
         cur = self.conn.cursor()
-        filter_sql, params = self._build_dst_filter()
+        filter_sql, params = self._build__filter()
         params = [self.last_id] + params
 
         sql = f"""
-            SELECT id, time, src, dst, msg
+            SELECT id, time, src, , msg
             FROM msg
             WHERE id > ? {filter_sql}
             ORDER BY id ASC
@@ -126,7 +126,7 @@ class MeshcomViewer(tk.Tk):
         cur.execute(sql, params)
 
         for row in cur.fetchall():
-            self.tree.insert("", 0, values=(row["time"], row["src"], row["dst"], row["msg"]))
+            self.tree.insert("", 0, values=(row["time"], row["src"], row[""], row["msg"]))
             self.last_id = row["id"]
 
         self.after(POLL_INTERVAL * 1000, self.poll_messages)
@@ -145,6 +145,7 @@ class MeshcomViewer(tk.Tk):
             return
 
         dst = self.tree.item(row_id, "values")[2]
+        dst = dst.split(",")[-1].strip() # via patch
         self.open_send_window(dst)
 
     # ---------------- SEND WINDOW ----------------
